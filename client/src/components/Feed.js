@@ -10,7 +10,7 @@ function Feed() {
 
     const fetchPosts = async () => {
         try {
-            const response = await fetch('http://localhost:5000/api/posts');
+            const response = await fetch('http://socialmedia-feed-3.onrender.com:5000/api/posts');
             const data = await response.json();
             setPosts(data);
         } catch (error) {
