@@ -46,6 +46,8 @@ app.listen(PORT, () => {
 app.post('/api/posts', upload.single('image'), async (req, res) => {
     try {
         // Upload image to Cloudinary
+        console.log('uploading image to cloudinary')
+        console.log(req.file)
         const b64 = Buffer.from(req.file.buffer).toString('base64');
         const dataURI = `data:${req.file.mimetype};base64,${b64}`;
         
@@ -69,6 +71,8 @@ app.post('/api/posts', upload.single('image'), async (req, res) => {
 
 app.get('/api/posts', async (req, res) => {
     try {
+        console.log('fetching posts')
+        console.log(req.body)
         const posts = await Post.find().sort({ createdAt: -1 });
         res.json(posts);
     } catch (error) {
